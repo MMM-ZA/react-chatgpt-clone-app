@@ -15,6 +15,8 @@ const App = () =>  {
 
  const handleClick = (uniqueTitle) => {
     setCurrentTitle(uniqueTitle)
+    setMessage(null)
+    setValue("")
 
  }
 
@@ -30,7 +32,7 @@ const App = () =>  {
       }
     }
     try {
-     const response = await fetch ('https://localhost:8000/completions', options)
+     const response = await fetch('http://localhost:8000/completions', options)
      const data =  await response.json()
      console.log(data)
      setMessage(data.choices[0].message)
@@ -61,7 +63,7 @@ const App = () =>  {
       ))
     }
 
-  }, [ message, currentTitle])
+  }, [ message, value, currentTitle])
 
   console.log(previousChats)
 
